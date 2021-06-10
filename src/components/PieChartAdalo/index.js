@@ -76,8 +76,6 @@ const PieChartAdalo = props => {
 		data.push(otherObject)
 	}
 
-	console.log(data)
-
 	const chartConfig = {
 		backgroundGradientFrom: '#1E2923',
 		backgroundGradientFromOpacity: 0,
