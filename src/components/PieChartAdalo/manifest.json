@@ -1,0 +1,47 @@
+{
+  "displayName": "Pie Chart Adalo",
+  "defaultWidth": 160,
+  "defaultHeight": 24,
+  "components": "./index.js",
+  "icon": "./example-thumbnail.png",
+  "props": [
+    {
+      "name": "items",
+      "displayName": "What is this a chart of?",
+      "type": "list"
+    },
+    {
+      "name": "numberOfSlices",
+      "displayName": "Number of Slices",
+      "type": "number",
+      "default": 3,
+      "control": { "type": "slider", "max": 6, "min": 2 }
+    }
+  ],
+  "childComponents": [
+    {
+      "name": "slices",
+      "displayName": "Slices",
+      "role": "listItem",
+      "reference": "items",
+      "props": [
+        {
+          "name": "sliceValue",
+          "displayName": "Slice Value",
+          "type": "number"
+        },
+        {
+          "name": "sliceLabel",
+          "displayName": "Slice Label",
+          "type": "text",
+          "styles": {
+            "fontFamily": "@body",
+            "color": "@text",
+            "fontWeight": 600,
+            "fontSize": 12
+          }
+        }
+      ]
+    }
+  ]
+}
