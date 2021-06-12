@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 import { PieChart as ChartKitPie } from 'react-native-chart-kit'
 
 //TODO: Label styling, click action, issues caused by library limitation, refactoring
 
 const PieChartAdalo = props => {
-  let { items, slices, legend, _width, _height, editor } = props
+  console.log(props)
+  let { items, slices, legend, _width, _height, editor, styles } = props
   let {
     numberOfSlices,
     otherSliceLabel,
@@ -19,6 +20,18 @@ const PieChartAdalo = props => {
     customColor6,
   } = slices
   let { enabled: legendEnabled, absoluteNumbers } = legend
+  //set label styling based on editor or passed props
+  let labelStyles
+  if (editor) {
+    labelStyles = {
+      color: '#7e7e7e',
+      fontFamily: 'inherit',
+      fontSize: 15,
+      fontWeight: 600,
+    }
+  } else {
+    labelStyles = styles.sliceLabel
+  }
 
   if (!items) {
     items = []
@@ -30,15 +43,14 @@ const PieChartAdalo = props => {
     otherObject,
     xOffset = 0,
     yOffset = 0,
-    height = _width / 1.62,
-    width = _width,
-    flexDirection
+    height,
+    width = _width
   const colorIncrement = 10
 
-  if (height > width) {
-    flexDirection = 'row'
+  if (legendEnabled) {
+    height = _width / 1.62
   } else {
-    flexDirection = 'column'
+    height = width
   }
 
   if (colorScheme === 0) {
@@ -102,28 +114,28 @@ const PieChartAdalo = props => {
   })
 
   if (editor) {
-	  //preview data
+    //preview data
     data = [
       {
         name: 'Beijing',
         value: 527612,
         color: colors[0],
-        legendFontColor: '#7F7F7F',
-        legendFontSize: 12,
+        legendFontColor: labelStyles.color,
+        legendFontSize: labelStyles.fontSize,
       },
       {
         name: 'New York',
         value: 8538000,
         color: colors[1],
-        legendFontColor: '#7F7F7F',
-        legendFontSize: 12,
+        legendFontColor: labelStyles.color,
+        legendFontSize: labelStyles.fontSize,
       },
       {
         name: otherSliceLabel,
         value: 2800000,
         color: colors[2],
-        legendFontColor: '#7F7F7F',
-        legendFontSize: 12,
+        legendFontColor: labelStyles.color,
+        legendFontSize: labelStyles.fontSize,
       },
     ]
   } else {
@@ -132,8 +144,8 @@ const PieChartAdalo = props => {
         name: item.sliceLabel,
         value: item.sliceValue,
         color: colors[index],
-        legendFontColor: '#7F7F7F',
-        legendFontSize: 12,
+        legendFontColor: labelStyles.color,
+        legendFontSize: labelStyles.fontSize,
       }
     })
   }
@@ -144,8 +156,8 @@ const PieChartAdalo = props => {
       name: otherSliceLabel,
       value: otherValue,
       color: colors[numberOfSlices - 1],
-      legendFontColor: '#7F7F7F',
-      legendFontSize: 12,
+      legendFontColor: labelStyles.color,
+      legendFontSize: labelStyles.fontSize,
     }
 
     data.push(otherObject)
@@ -162,32 +174,19 @@ const PieChartAdalo = props => {
     useShadowColorFromDataset: false, // optional
   }
 
-  //TODO: is this still needed?
-  const wrapperStyle = {
-    height: _width / 1.62,
-    width,
-    flexDirection,
-    display: 'flex',
-    alignItems: 'center',
-    alignContent: 'center',
-    // backgroundColor: 'red',
-  }
-
   return (
-    <View style={wrapperStyle}>
-      <ChartKitPie
-        data={data}
-        width={_width}
-        height={height}
-        chartConfig={chartConfig}
-        accessor={'value'}
-        backgroundColor={'transparent'}
-        center={[xOffset, yOffset]}
-        absolute={absoluteNumbers} //TODO: make this a prop
-        hasLegend={legendEnabled} //TODO: make this a prop
-        avoidFalseZero
-      />
-    </View>
+    <ChartKitPie
+      data={data}
+      width={_width}
+      height={height}
+      chartConfig={chartConfig}
+      accessor={'value'}
+      backgroundColor={'transparent'}
+      center={[xOffset, yOffset]}
+      absolute={absoluteNumbers} //TODO: make this a prop
+      hasLegend={legendEnabled} //TODO: make this a prop
+      avoidFalseZero
+    />
   )
   i
 }
