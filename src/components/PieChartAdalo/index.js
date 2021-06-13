@@ -146,6 +146,7 @@ const PieChartAdalo = props => {
         color: colors[index],
         legendFontColor: labelStyles.color,
         legendFontSize: labelStyles.fontSize,
+        legendFontFamily: labelStyles.fontFamily,
       }
     })
   }
@@ -158,6 +159,7 @@ const PieChartAdalo = props => {
       color: colors[numberOfSlices - 1],
       legendFontColor: labelStyles.color,
       legendFontSize: labelStyles.fontSize,
+      legendFontFamily: labelStyles.fontFamily,
     }
 
     data.push(otherObject)
