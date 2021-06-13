@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 import { PieChart as ChartKitPie } from 'react-native-chart-kit'
 
-//TODO: Label styling, click action, issues caused by library limitation, refactoring
+//TODO: click action, issues caused by library limitation (label font weight, label wrapping), refactoring
 
 const PieChartAdalo = props => {
   console.log(props)

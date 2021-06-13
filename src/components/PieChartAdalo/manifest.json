@@ -27,7 +27,6 @@
       "styles": {
         "fontFamily": "@body",
         "color": "@text",
-        "fontWeight": 600,
         "fontSize": 12
       },
       "role": "listItem",
