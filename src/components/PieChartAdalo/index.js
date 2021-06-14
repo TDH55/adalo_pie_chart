@@ -6,7 +6,8 @@ import { PieChart as ChartKitPie } from 'react-native-chart-kit'
 
 const PieChartAdalo = props => {
   console.log(props)
-  let { items, slices, legend, _width, _height, editor, styles } = props
+  let { items, slices, legend, _width, _height, editor, styles, sliceAction } =
+    props
   let {
     numberOfSlices,
     otherSliceLabel,
@@ -43,14 +44,13 @@ const PieChartAdalo = props => {
     otherObject,
     xOffset = 0,
     yOffset = 0,
-    height,
     width = _width
   const colorIncrement = 10
 
   if (legendEnabled) {
-    height = _width / 1.62
+    _height = _width / 1.62
   } else {
-    height = width
+    _height = width
   }
 
   if (colorScheme === 0) {
@@ -117,22 +117,22 @@ const PieChartAdalo = props => {
     //preview data
     data = [
       {
-        name: 'Beijing',
-        value: 527612,
+        name: 'Item 1',
+        value: 12,
         color: colors[0],
         legendFontColor: labelStyles.color,
         legendFontSize: labelStyles.fontSize,
       },
       {
-        name: 'New York',
-        value: 8538000,
+        name: 'Item 2',
+        value: 22,
         color: colors[1],
         legendFontColor: labelStyles.color,
         legendFontSize: labelStyles.fontSize,
       },
       {
         name: otherSliceLabel,
-        value: 2800000,
+        value: 10,
         color: colors[2],
         legendFontColor: labelStyles.color,
         legendFontSize: labelStyles.fontSize,
@@ -147,12 +147,19 @@ const PieChartAdalo = props => {
         legendFontColor: labelStyles.color,
         legendFontSize: labelStyles.fontSize,
         legendFontFamily: labelStyles.fontFamily,
+        legendFontWeight: labelStyles.fontWeight,
+        action: item.sliceAction,
       }
     })
   }
 
   //add the other slice if it exists
   if (otherValue > 0) {
+    let otherItem = {
+      id: numberOfSlices,
+      sliceValue: otherValue,
+      name: otherSliceLabel,
+    }
     otherObject = {
       name: otherSliceLabel,
       value: otherValue,
@@ -160,8 +167,9 @@ const PieChartAdalo = props => {
       legendFontColor: labelStyles.color,
       legendFontSize: labelStyles.fontSize,
       legendFontFamily: labelStyles.fontFamily,
+      legendFontWeight: labelStyles.fontWeight,
+      // action: oh,
     }
-
     data.push(otherObject)
   }
 
@@ -180,13 +188,13 @@ const PieChartAdalo = props => {
     <ChartKitPie
       data={data}
       width={_width}
-      height={height}
+      height={_height}
       chartConfig={chartConfig}
       accessor={'value'}
       backgroundColor={'transparent'}
       center={[xOffset, yOffset]}
-      absolute={absoluteNumbers} //TODO: make this a prop
-      hasLegend={legendEnabled} //TODO: make this a prop
+      absolute={absoluteNumbers}
+      hasLegend={legendEnabled}
       avoidFalseZero
     />
   )

@@ -27,8 +27,16 @@
       "styles": {
         "fontFamily": "@body",
         "color": "@text",
-        "fontSize": 12
+        "fontSize": 12,
+        "fontWeight": 600
       },
+      "role": "listItem",
+      "reference": "items"
+    },
+    {
+      "name": "sliceAction",
+      "displayName": "Slice Action",
+      "type": "action",
       "role": "listItem",
       "reference": "items"
     }
