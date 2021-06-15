@@ -20,7 +20,9 @@ const PieChartAdalo = props => {
     customColor5,
     customColor6,
   } = slices
-  let { enabled: legendEnabled, absoluteNumbers } = legend
+  let legendEnabled = true
+  //TODO: check if we should keep this prop
+  let { absoluteNumbers } = legend
   //set label styling based on editor or passed props
   let labelStyles
   if (editor) {

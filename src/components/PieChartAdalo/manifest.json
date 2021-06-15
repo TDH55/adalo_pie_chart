@@ -4,7 +4,7 @@
   "defaultHeight": 24,
   "components": "./index.js",
   "icon": "./example-thumbnail.png",
-  "resizeY": false,
+  "resizeY": true,
 
   "props": [
     {
@@ -55,7 +55,7 @@
         },
         {
           "name": "otherSliceLabel",
-          "displayName": "'Other' Slice Label",
+          "displayName": "Other Slice Label",
           "type": "text",
           "default": "Other"
         },
@@ -74,7 +74,7 @@
         },
         {
           "name": "monochromaticScheme",
-          "displayName": "Monochrmatic Scheme",
+          "displayName": "Monochromatic Scheme",
           "type": "color",
           "default": "@primary",
           "enabled": {
@@ -145,7 +145,6 @@
       "name": "legend",
       "displayName": "Legend",
       "props": [
-        { "name": "enabled", "type": "boolean", "default": true },
         {
           "name": "absoluteNumbers",
           "displayName": "Show values as absolute numbers",
