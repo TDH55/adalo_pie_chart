@@ -28,7 +28,7 @@
     "react-native-web": "^0.9.5"
   },
   "dependencies": {
-    "react-native-chart-kit": "github:AdaloHQ/react-native-chart-kit",
+    "react-native-chart-kit": "https://github.com/AdaloHQ/react-native-chart-kit.git",
     "react-native-svg": "^12.1.1"
   }
 }
