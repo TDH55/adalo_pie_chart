@@ -1,10 +1,9 @@
 import React from 'react'
-import { Text, View, StyleSheet } from 'react-native'
 import { PieChart as ChartKitPie } from 'react-native-chart-kit'
 
 //TODO: click action, issues caused by library limitation (label font weight, label wrapping), refactoring
 
-const PieChartAdalo = props => {
+const PieChart = props => {
   console.log(props)
   let { items, slices, legend, _width, _height, editor, styles, sliceAction } =
     props
@@ -278,4 +277,4 @@ const generateScheme = (hslBase, lValues) => {
   return hslColors
 }
 
-export default PieChartAdalo
+export default PieChart

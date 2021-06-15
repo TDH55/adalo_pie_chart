@@ -1,5 +1,5 @@
 {
-  "displayName": "Pie Chart Adalo",
+  "displayName": "Pie Chart",
   "defaultWidth": 160,
   "defaultHeight": 24,
   "components": "./index.js",
