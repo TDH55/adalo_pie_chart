@@ -4,7 +4,6 @@ import { PieChart as ChartKitPie } from 'react-native-chart-kit'
 //TODO: click action, issues caused by library limitation (label font weight, label wrapping), refactoring
 
 const PieChart = props => {
-  console.log(props)
   let { items, slices, showPercentages, _width, _height, editor, styles } =
     props
   let {
@@ -52,8 +51,11 @@ const PieChart = props => {
   } else {
     _height = width
   }
+  console.log('height:', _height, 'width:', width)
 
   if (colorScheme === 0) {
+    //convert color to hsl and then get the light value
+    //create an array of light values that will be used for the colors of the scheme
     let hslBase = hexToHSL(monochromaticScheme),
       lValue = getLValue(hslBase),
       lValues = [lValue],
@@ -62,6 +64,7 @@ const PieChart = props => {
     const possibleUp = (100 - lValue) / colorIncrement
     const possibleDown = lValue / colorIncrement
 
+    //create l values for a monochromatic scheme by creating an array of l values based on the base value
     let multiplier = 1
     for (let i = 0; i < numberOfSlices - 1; i++) {
       if (i % 2 === 0) {
